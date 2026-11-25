@@ -1,0 +1,16 @@
+name: easy_meanflow
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pytorch
+  - pip
+  - pip:
+      - click
+      - requests
+      - psutil
+      - tensorboard
+      - scipy

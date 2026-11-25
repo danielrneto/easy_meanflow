@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockermf.dockerfile
+    container_name: easy_meanflow_dev
+    # Keeps the container alive when CMD is ["/bin/bash"]
+    stdin_open: true # Equivalent to -i
+    tty: true        # Equivalent to -t
+    working_dir: /easy_meanflow
+    volumes:
+      # 1. Bind mount: Syncs your current local directory with /app inside the container
+      - ./data:/easy_meanflow/data
+      - ./logs:/easy_meanflow/logs
+      # - .:/easy_meanflow/.
+      # 2. Named volume (Optional): Persists data/outputs outside the container lifecycle
+      # - model_data:/easy_meanflow/data
+    shm_size: "16g"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+# volumes:
+#   model_data:
