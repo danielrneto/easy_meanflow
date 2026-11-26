@@ -1,3 +1,16 @@
+O código aqui utilizado foi implementado originalmente em https://github.com/pkulwj1994/easy_meanflow. Basicamente, eles simplificaram e padronizaram os testes da metodologia Mean Flow.
+
+Neste projeto, foi adicionado um Dockerfile e um Docker Compose, para que o código possa ser replicado de maneira fiel. Dessa forma, para realizar o treinamento, é necessário rodar:
+
+docker compose build app
+docker compose run app
+
+O container será criado na modalidade interativa. Dentro dele, basta executar o seguinte script:
+
+sh ./exps/MF00/train_script.sh
+
+O README do projeto original se encontra abaixo.
+
 # Easy MeanFlow (Pytorch) 🌊
 
 *A clean PyTorch implementation of the paper ["Mean Flows for One-step Generative Modeling"](https://arxiv.org/abs/2505.13447) by Geng et al, with on-the-fly FID evaluation.*

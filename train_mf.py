@@ -149,8 +149,12 @@ def main(**kwargs):
 
     # Network architecture.
     if opts.arch == 'ddpmpp':
-        c.network_kwargs.update(model_type='SongUNet', embedding_type='positional', encoder_type='standard', decoder_type='standard')
-        c.network_kwargs.update(channel_mult_noise=1, resample_filter=[1,1], model_channels=128, channel_mult=[2,2,2])
+        # c.network_kwargs.update(model_type='SongUNet', embedding_type='positional', encoder_type='standard', decoder_type='standard')
+        # c.network_kwargs.update(augment_dim=0, dropout=0.1)
+        # c.network_kwargs.update(channel_mult_noise=1, resample_filter=[1,1], model_channels=128, num_blocks=4, channel_mult=[2,2,2])
+        c.network_kwargs.update(model_type='SongUNet', embedding_type='fourier', encoder_type='residual', decoder_type='standard')
+        c.network_kwargs.update(augment_dim=9, dropout=0.2)
+        c.network_kwargs.update(channel_mult_noise=2, resample_filter=[1,3,3,1], model_channels=96, num_blocks=3, channel_mult=[2,2,2])
     else:
         raise NoteImplementedError('Architecture {opts.arch} not implemented.')
 
